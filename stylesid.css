@@ -1,0 +1,362 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-primary: system-ui, sans-serif;
+  --font-size-default: 16px;
+  --font-size-header: 32px;
+  --bg: #000;
+  --bg-code: rgba(255, 255, 255, 0.1);
+  --fg-code: #1899ff;
+  --fg-1: #000;
+  --fg-2: rgb(207, 207, 207);
+  --fg-3: rgb(135, 135, 135);
+  --fg-4: rgb(79, 79, 79);
+  --accent-color: rgb(75, 189, 255);
+	--accent-color-shadow: rgba(75, 189, 255, 0.5);
+  --accent-color-hover: rgb(19, 230, 245);
+  --base-gradient: linear-gradient(
+    180deg,
+		#cbfdc6,
+		#cbfdc6
+  );
+  --br-xs: 4px;
+  --br-sm: 8px;
+  --br-md: 12px;
+  --br-lg: 16px;
+}
+
+/* Basics */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-color: var(--bg);
+  background: var(--base-gradient);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-size: var(--font-size-default);
+  font-family: var(--font-primary);
+  margin: 8px 0;
+  color: #3844ae;
+}
+
+a,
+a:visited {
+  font-family: var(--font-primary);
+  color: var(--accent-color);
+  font-size: var(--font-size-default);
+  text-decoration: none;
+  margin: 0;
+}
+
+a:hover,
+a:hover * {
+  text-decoration: underline;
+}
+
+.header-anchor {
+	color: var(--fg-1) !important;
+	font-size: inherit;
+	text-shadow: none !important;
+}
+
+li,
+p {
+  font-family: var(--font-primary);
+  color: var(--fg-2);
+  font-size: var(--font-size-default);
+  line-height: 1.5;
+}
+
+p {
+  width: 100%;
+	margin: 0.5em 0;
+}
+
+img {
+  width: 100%;
+  border-radius: var(--br-lg);
+}
+
+hr {
+  width: 100%;
+  opacity: 0.5;
+}
+
+strong {
+  color: #1899ff;
+}
+
+/* Shared */
+.container {
+  max-width: 680px;
+  padding: 32px;
+}
+.container,
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+}
+
+.container h1 {
+  padding: 8px 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.container h2 {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 4px 0;
+  color: var(--fg-1);
+}
+
+.content {
+  overflow-y: scroll;
+}
+
+/* Home */
+.home-top {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+.home-header {
+  margin: 0;
+  padding-bottom: 16px;
+}
+
+.home section {
+  padding-bottom: 32px;
+}
+
+.home.container h2 {
+  padding: 16px 0;
+  color: var(--fg-1);
+}
+
+.section-title {
+  padding-bottom: 16px;
+  font-size: var(--font-size-default);
+  color: var(--fg-1);
+}
+
+.post-preview {
+  display: block;
+  font-size: var(--font-size-default);
+  color: var(--accent-color);
+  margin: 0;
+  padding-bottom: 16px;
+}
+
+/* Posts */
+.metadata {
+  font-family: var(--font-primary);
+  color: var(--fg-3);
+  font-size: var(--font-size-default);
+  padding: 8px 0;
+  font-weight: 500;
+}
+
+.home-link {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-default);
+  color: var(--accent-color);
+  padding: 0;
+  text-decoration: none;
+  margin-bottom: 16px;
+  background: none;
+  border: none;
+	line-height: 1.5;
+}
+
+code {
+  color: var(--fg-code);
+  font-size: var(--font-size-default);
+  font-family: monospace;
+  overflow: scroll;
+}
+
+pre {
+  width: 100%;
+  padding: 8px;
+  border-radius: var(--br-sm);
+  background: var(--bg-code);
+}
+
+iframe {
+  border-radius: var(--br-lg);
+}
+
+.pill {
+	padding: 4px 6px;
+	border-radius: var(--br-sm);
+	background: var(--bg-code);
+}
+
+/* Stream styles */
+/* default styles for the grey bubbles
+these are just <p> elements
+*/
+.stream p {
+  align-self: start;
+  padding: 8px 12px;
+  border-radius: var(--br-lg);
+  font-weight: medium;
+  width: fit-content;
+  font-family: Inter, sans-serif;
+  color: #607d8b;
+  font-weight: 500;
+  margin: 0;
+  background: #e5f4f3;
+  margin-bottom: 10px;
+  max-width: 70%;
+}
+
+.stream .content {
+  padding: 24px 0px;
+}
+
+/* blockquotes have <p> nested inside of them, so you want the <blockquote> to be a wrapper responsible for size and position, then just use the <p> for color and text */
+.stream blockquote {
+  align-self: end;
+  border-radius: 16px;
+  margin: 0 0 10px 0;
+  max-width: 60%;
+}
+
+/* now override the previous <p> styles  */
+.stream blockquote > p {
+  background: #ffd54f;
+  max-width: 100%;
+  margin-bottom: 0;
+}
+
+/* extra styles */
+.stream p > code {
+  color: #1899ff;
+}
+
+.stream p > a {
+  color: white;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+  .stream p,
+  .stream blockquote {
+    max-width: 90%;
+  }
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 12px 0;
+}
+
+/* Mailchimp style overrides */
+#mc_embed_signup {
+  background: transparent !important;
+  width: 100% !important;
+  max-width: 400px;
+  color: var(--fg-1) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-top: 32px !important;
+}
+
+#mc_embed_signup * {
+  font-size: 16px !important;
+  font-family: var(--font-primary) !important;
+}
+
+#mc_embed_signup form {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#mc_embed_signup .email {
+  background: transparent !important;
+  color: var(--fg-1) !important;
+  border: 1px solid var(--fg-4) !important;
+  padding: 8px !important;
+  height: 40px !important;
+  margin: 0 !important;
+  overflow-x: scroll !important;
+  border-radius: var(--br-md) !important;
+}
+
+.indicates-required,
+.asterisk,
+.helper_text,
+.brandingLogo {
+  display: none !important;
+}
+
+.mce_inline_error {
+  background: rgba(211, 55, 20, 0.15) !important;
+  padding: 8px !important;
+  margin-top: 8px !important;
+  border-radius: var(--br-sm) !important;
+  margin-bottom: 0 !important;
+}
+
+#mce-responses {
+  width: 100%;
+}
+
+#mce-success-response {
+  width: 100%;
+  background: rgba(82, 146, 20, 0.2);
+  padding: 8px !important;
+  margin: 8px 0 !important;
+  border-radius: var(--br-sm) !important;
+}
+
+#mc-embedded-subscribe {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: auto !important;
+  padding: 4px 12px !important;
+  border-radius: var(--br-md) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: var(--accent-color) !important;
+  margin-top: 8px !important;
+}
+
+#mce-responses,
+.response {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+#mce-responses {
+  padding: 0 !important;
+}
+
+.mc-field-group label {
+  margin-bottom: 8px !important;
+}
+
+.mc-field-group {
+  padding: 0 !important;
+  margin: 0 !important;
+}
